@@ -21,6 +21,7 @@ public class CheckoutService implements ICheckoutService {
         Double total = 0.0;
         for(String id : productsIds) {
             Product product = productService.getProduct(id);
+            System.out.println(product.getInstance());
             total += product.getPrice();
         }
         Checkout checkout = new Checkout("234", "www.example.com", total.toString(), List.of("credit_card"));
