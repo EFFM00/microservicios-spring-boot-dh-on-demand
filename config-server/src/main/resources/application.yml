@@ -13,5 +13,4 @@ spring:
           hostKeyAlgorithm: ssh-rsa
           privateKey: |
             -----BEGIN RSA PRIVATE KEY-----
-
             -----END RSA PRIVATE KEY-----
