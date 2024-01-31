@@ -1,0 +1,10 @@
+spring:
+  config:
+    import: ":optional:configserver:"
+  application:
+    name: gateway-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config-server
