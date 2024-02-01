@@ -1,10 +1,22 @@
+server:
+  port: 8093
+
 spring:
   config:
-    import: ":optional:configserver:"
+    import: "optional:configserver:"
   application:
     name: gateway-service
   cloud:
     config:
+      importCheck:
+        enable: false
+      enabled: false
       discovery:
-        enabled: true
         serviceId: config-server
+        enabled: false
+    gateway:
+      routes:
+        - id: checkout-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/checkout
