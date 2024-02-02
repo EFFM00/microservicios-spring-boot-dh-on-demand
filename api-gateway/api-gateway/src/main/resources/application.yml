@@ -20,3 +20,6 @@ spring:
           uri: lb://checkout-service
           predicates:
             - Path=/checkout
+          filters:
+            - AddRequestHeader=X-Request-From, gateway
+            - AddRequestHeader=X-Token-Test, abc123
