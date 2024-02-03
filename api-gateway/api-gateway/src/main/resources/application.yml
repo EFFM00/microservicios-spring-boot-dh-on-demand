@@ -23,3 +23,10 @@ spring:
           filters:
             - AddRequestHeader=X-Request-From, gateway
             - AddRequestHeader=X-Token-Test, abc123
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/products
+          filters:
+            - AddRequestHeader=X-Request-From, gateway
+            - AddRequestHeader=X-Token-Test, abc123
