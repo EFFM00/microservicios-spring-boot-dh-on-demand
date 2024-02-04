@@ -20,9 +20,6 @@ public class Checkout {
         this.id = id;
     }
 
-    public Checkout() {
-    }
-
     public String getId() {
         return id;
     }
