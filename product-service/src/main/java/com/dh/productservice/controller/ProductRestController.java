@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductRestController {
 
     @GetMapping()
-    public Product getProduct(@RequestParam String id) {
+    public Product getProduct(@RequestParam String id, @RequestParam(defaultValue= "false") Boolean throwError) {
+        if(throwError) {
+            throw new RuntimeException();
+        }
         return new Product(id, "Mouse", 10.0, "Instance 2");
     }
 }
