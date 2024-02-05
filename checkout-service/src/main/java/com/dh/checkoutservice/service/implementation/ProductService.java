@@ -5,6 +5,7 @@ import com.dh.checkoutservice.repository.FeignProductRepository;
 import com.dh.checkoutservice.service.IProductService;
 import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
@@ -23,6 +24,7 @@ public class ProductService implements IProductService {
 
     @Override
     @CircuitBreaker(name="product",fallbackMethod="getProductFallbackMethod")
+    @Retry(name="product")
     public Product getProduct(String id) {
         return feignProductRepository.getProductById(id, true);
     }
