@@ -1,9 +1,8 @@
 package paymentservice.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 import paymentservice.model.Payment;
 import paymentservice.service.PaymentService;
 
@@ -12,6 +11,13 @@ import paymentservice.service.PaymentService;
 public class PaymentController {
 
     private PaymentService paymentService;
+
+    Logger log = LoggerFactory.getLogger(PaymentController.class);
+    @GetMapping()
+    public Payment getPayment(String id) {
+        log.info("Intentando obtener payment con id: "+ id);
+        return new Payment(id, 999.99f, "178482", "838283");
+    }
 
     public PaymentController(PaymentService paymentService) {
         super();
